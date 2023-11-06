@@ -2,8 +2,14 @@ import { useState, useEffect } from "react";
 import assutechLogo from "../assets/icons/Logos/Assutech.png";
 import { Link } from "react-router-dom";
 
+interface Nav {
+  id: number;
+  url: string;
+  name:  string;
+}
+
 const Header = () => {
-  const [links, setLinks] = useState<any[]>();
+  const [links, setLinks] = useState<Nav[]>([]);
   const url: string = "http://localhost:3000/nav-links";
   useEffect(() => {
     const FetchData = async () => {
@@ -20,7 +26,7 @@ const Header = () => {
         <div>
           <i className="fa-solid fa-bars text-secondary md:hidden"></i>
           <div className="gap-8 md:flex flex-row">
-            {links?.map(({ name, id, url }) => {
+            {links.map(({ name, id, url }) => {
               if (url === "*") return null;
               return (
                 <Link

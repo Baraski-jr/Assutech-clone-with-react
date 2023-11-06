@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 interface Tool {
-    map(arg0: { id: any; name: void; image: any; text: any; }): import("react").ReactNode;
     id: string;
     name: string;
     image: string;
@@ -14,7 +13,6 @@ const Tools = () => {
         const FetchData = async () => {
             const response = await fetch(url);
             const data = await response.json();
-            console.log(data)
             setTools(data)
         }
         FetchData()
